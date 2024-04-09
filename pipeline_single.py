@@ -97,7 +97,7 @@ def run_samtools(sample, output_dir):
         "samtools",
         "view",
         "-h",
-        "-f12",
+        "-f4",
         f"{output_dir}/bwamem2/{sample}_out.sam"
     ]
     # Create file for output
@@ -209,15 +209,15 @@ def flagstat(sample, output_dir):
     # Extract the amount of input reads from 2nd line
     total_input = int(second_line.split(' ')[0])
     # Select the 12th line (amount of properly paired reads)
-    twelveth_line = lines[11]
+    eight_line = lines[7]
     # Extract the number from the 12th line
-    properly_paired = int(twelveth_line.split(' ')[0])
+    properly_paired = int(eight_line.split(' ')[0])
     # Calculate amount of disconcordantly paired reads
     unconcordantly_aligned = total_input - properly_paired
     # Print the results
-    print(f"Number of input reads for sample {sample}: {total_input}", flush=True)
+    print(f"Number of BWA-MEM2 input reads for sample {sample}: {total_input}", flush=True)
     print(f"Number of concordantly aligned reads for sample {sample}: {properly_paired}", flush=True)
-    print(f"Number of unconcordantly aligned reads for sample {sample}: {unconcordantly_aligned}", flush=True)
+    print(f"Number of unaligned reads for sample {sample}: {unconcordantly_aligned}", flush=True)
     # Return amounts
     return total_input, properly_paired, unconcordantly_aligned
 
@@ -280,10 +280,10 @@ def read_count_extractor(sample, output_dir):
         None
     """
     output_file = f"{output_dir}/read_counts.csv"
-    # extract homo sapiens reads
-    homo_number, bac_number = kraken2_stats(sample, output_dir)
     # Run flagstat for the current sample
     total_input, properly_paired, unconcordantly_aligned = flagstat(sample, output_dir)
+    # extract homo sapiens reads
+    homo_number, bac_number = kraken2_stats(sample, output_dir)
     # Write values from each sample to csv
     with open(output_file, 'a', newline='') as outfile:
         out_writer = csv.writer(outfile)

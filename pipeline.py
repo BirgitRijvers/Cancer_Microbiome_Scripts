@@ -219,9 +219,9 @@ def flagstat(sample, output_dir):
     # Calculate amount of disconcordantly paired reads
     unconcordantly_aligned = total_input - properly_paired
     # Print the results
-    print(f"Number of input reads for sample {sample}: {total_input}", flush=True)
+    print(f"Number of BWA-MEM2 input reads for sample {sample}: {total_input}", flush=True)
     print(f"Number of concordantly aligned reads for sample {sample}: {properly_paired}", flush=True)
-    print(f"Number of unconcordantly aligned reads for sample {sample}: {unconcordantly_aligned}", flush=True)
+    print(f"Number of unaligned reads for sample {sample}: {unconcordantly_aligned}", flush=True)
     # Return amounts
     return total_input, properly_paired, unconcordantly_aligned
 
@@ -284,10 +284,10 @@ def read_count_extractor(sample, output_dir):
         None
     """
     output_file = f"{output_dir}/read_counts.csv"
-    # extract homo sapiens reads
-    homo_number, bac_number = kraken2_stats(sample, output_dir)
     # Run flagstat for the current sample
     total_input, properly_paired, unconcordantly_aligned = flagstat(sample, output_dir)
+    # extract homo sapiens reads
+    homo_number, bac_number = kraken2_stats(sample, output_dir)
     # Write values from each sample to csv
     with open(output_file, 'a', newline='') as outfile:
         out_writer = csv.writer(outfile)
