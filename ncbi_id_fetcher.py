@@ -38,3 +38,6 @@ with open(output_path, 'w') as f:
     # Write each combination to new row in csv file
     for key in ids.keys():
         f.write("%s,%s\n"%(key,ids[key]))
+
+# Output space separated list of NCBI IDs without names (for copy-pasting to krakentools commands)
+print(" ".join(ids.values()))
