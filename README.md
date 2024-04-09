@@ -7,10 +7,15 @@ Created during the BSc graduation internship of Birgit Rijvers at the Clinical B
 ## Scripts included
 Add descriptions when final!
 ### pipeline.py
+Runs the full pipeline on paired end data.
 ### pipeline_single.py
+Runs the full pipeline on single end data, but issues with counting of classifications.
 ### ncbi_id_fetcher.py
+Fetches taxonomy IDs from NCBI based on taxonomic names.
 ### read_count_extracter_kronly.py
+Extracts read counts from certain classifications in a kraken report, incorporated into pipeline.py
 ### kraken_classification_counter.py
+Counts certain classifications (Human, root, unclassified) in a kraken report.
 
 ## Citations
 ### Tools
