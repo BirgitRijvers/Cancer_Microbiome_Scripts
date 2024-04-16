@@ -146,8 +146,6 @@ def check_fastq(sample, output_dir):
         raise ValueError(f"Error: Fastq file {fastq_file_1} is empty for sample {sample}.\n")
     if os.path.getsize(fastq_file_2) == 0:
         raise ValueError(f"Error: Fastq file {fastq_file_2} is empty for sample {sample}.\n")
-    # Print status message
-    print(f"Fastq files contain reads for sample {sample}.\n", flush=True)
 
 def run_kraken2(sample, output_dir):
     """

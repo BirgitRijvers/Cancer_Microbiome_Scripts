@@ -127,7 +127,6 @@ def run_samtools(sample, output_dir):
 def check_fastq(sample, output_dir):
     """
     Checks if the fastq file contains data, exits with error if it is empty.
-    Print status message to terminal when finished.
 
     Args:
         sample (str): The name of the sample.
@@ -144,8 +143,6 @@ def check_fastq(sample, output_dir):
     # Check if fastqfile is empty
     if os.path.getsize(fastq_file) == 0:
         raise ValueError(f"Error: Fastq file {fastq_file} is empty for sample {sample}.\n")
-    # Print status message
-    print(f"Fastq file {fastq_file} contains reads for sample {sample}.\n", flush=True)
 
 def run_kraken2(sample, output_dir):
     """
@@ -208,7 +205,7 @@ def flagstat(sample, output_dir):
     second_line = lines[1]
     # Extract the amount of input reads from 2nd line
     total_input = int(second_line.split(' ')[0])
-    # Select the 12th line (amount of properly paired reads)
+    # Select the 8th line (primary mapped)
     eight_line = lines[7]
     # Extract the number from the 12th line
     properly_paired = int(eight_line.split(' ')[0])
@@ -288,7 +285,6 @@ def read_count_extractor(sample, output_dir):
     with open(output_file, 'a', newline='') as outfile:
         out_writer = csv.writer(outfile)
         out_writer.writerow([sample, total_input, properly_paired, unconcordantly_aligned, homo_number, bac_number])
-
 # Function to run kraken-biom
 def run_kraken_biom(output_dir):
     """
