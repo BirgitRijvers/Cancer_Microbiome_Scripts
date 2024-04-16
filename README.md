@@ -5,20 +5,24 @@ The scripts are grouped based on their functionality, with the group "Kraken2" a
 Created during the BSc graduation internship of Birgit Rijvers at the Clinical Bioinformatics group of Erasmus University Medical Center.
 
 ## Scripts included
-Add descriptions when final!
+### switchpipe.py
+Runs the full pipeline on both paired and single end data.
 ### pipeline.py
-Runs the full pipeline on paired end data.
+Runs pipeline without QC on paired end data.
 ### pipeline_single.py
-Runs the full pipeline on single end data, but issues with counting of classifications.
+Runs pipeline without QC and wrong counter on single end data.
 ### ncbi_id_fetcher.py
 Fetches taxonomy IDs from NCBI based on taxonomic names.
 ### read_count_extracter_kronly.py
 Extracts read counts from certain classifications in a kraken report, incorporated into pipeline.py
 ### kraken_classification_counter.py
-Counts certain classifications (Human, root, unclassified) in a kraken report.
+Counts certain classifications (Human, root, unclassified & user specified) in kraken output (not report style).
 
 ## Citations
 ### Tools
+[Fastp](https://github.com/OpenGene/fastp)
+> Chen S, Zhou Y, Chen Y, Gu J. fastp: an ultra-fast all-in-one FASTQ preprocessor. Bioinformatics. 2018 Sep 1;34(17):i884-i890. doi: 10.1093/bioinformatics/bty560. PMID: 30423086; PMCID: PMC6129281.
+
 [Kraken2](https://github.com/DerrickWood/kraken2) 
 > Wood, D.E., Lu, J. & Langmead, B. Improved metagenomic analysis with Kraken 2. Genome Biol 20, 257 (2019). https://doi.org/10.1186/s13059-019-1891-0
 
