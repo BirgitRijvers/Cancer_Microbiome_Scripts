@@ -21,7 +21,7 @@ def create_samplesheet():
     parser = argparse.ArgumentParser(
         description=('Create a CSV samplesheet from a directory of FASTQ files.')
     )
-    # Add the arguments
+    # Add arguments
     parser.add_argument('--samplesheet', '-s', type=str, required=True,
                         help='Path to samplesheet to be created')
     parser.add_argument('--fastq_dir', '-f', type=str, required=True,

@@ -1,5 +1,5 @@
 """
-This script runs BWA-MEM2, Samtools view&fastq, Kraken2 and kraken-biom on files from a samplesheet.
+This script runs BWA-MEM2, Samtools view&fastq, Kraken2 and kraken-biom on paired files from a samplesheet.
 It also creates a CSV file with read counts from the SAM files and Kraken reports. 
 
 Make sure you are in an active conda environment with bwa-mem2, samtools, kraken2, and kraken-biom installed.

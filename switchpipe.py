@@ -42,11 +42,12 @@ import json
 
 # Path to bwa-mem2 index of the reference genome
     # Modify if needed
-bwamem2_db = "/home/birgit/data/db_index/bwa-mem2/human"
+bwamem2_db = "/mnt/FS2/data_2/Users/Birgit/db_index/bwa-mem2/human"
 
 # Path to kraken2 database
     # Modify if neeeded
-kraken2_db = "/home/birgit/data/db_index/kraken2/standard"
+kraken2_db = "/mnt/FS2/data_2/Users/Birgit/db_index/kraken2/standard/"
+
 
 def run_fastp(sample, fastq_1, fastq_2, output_dir):
     """
