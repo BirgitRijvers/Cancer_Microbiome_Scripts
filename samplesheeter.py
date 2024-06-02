@@ -57,7 +57,7 @@ def create_samplesheet():
             sample = filename.split("_")[0]
             if sample not in samples:
                 samples[sample] = []
-            samples[sample].append(filename)
+            samples[sample].append(os.path.abspath(os.path.join(data_dir, filename)))
 
         # Write the samples to the CSV file
         with open(output_file, 'w', newline='') as outfile:
@@ -69,8 +69,9 @@ def create_samplesheet():
                 # Ensure R1 is before R2
                 filenames.sort()
                 row = [sample]
-                row.extend(os.path.join(data_dir, filename) for filename in filenames)
+                row.extend(filenames)
                 writer.writerow(row)
+    
     # If the FASTQ files are single-end
     else:
         # Loop through files and group by sample
@@ -78,7 +79,7 @@ def create_samplesheet():
             sample = filename.split(".")[0]
             if sample not in samples:
                 samples[sample] = []
-            samples[sample].append(filename)
+            samples[sample].append(os.path.abspath(os.path.join(data_dir, filename)))
 
         # Write the samples to the CSV file
         with open(output_file, 'w', newline='') as outfile:
@@ -87,7 +88,7 @@ def create_samplesheet():
             writer.writerow(["sample", "fastq_1"])
             for sample, filenames in samples.items():
                 row = [sample]
-                row.extend(os.path.join(data_dir, filename) for filename in filenames)
+                row.extend(filenames)
                 writer.writerow(row)
 
 # Call the function to create the samplesheet

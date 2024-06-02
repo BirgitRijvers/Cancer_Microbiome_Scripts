@@ -1,22 +1,35 @@
 # Cancer Microbiome Scripts
-The Cancer Microbiome Scripts repository is a collection of scripts used during analyzing the microbiome in tumour material based on metatranscriptomic data. 
-The scripts are grouped based on their functionality, with the group "Kraken2" and other scripts. 
+The Cancer Microbiome Scripts repository is a collection of miscellaneous scripts used during analyzing the microbiome in tumour material based on metatranscriptomic data. 
 
 Created during the BSc graduation internship of Birgit Rijvers at the Clinical Bioinformatics group of Erasmus University Medical Center.
 
+The main goal of this internship was to create a pipeline that: 
+- Takes sequencing data (FASTQ) as input
+- Performs quality control
+- Maps reads to human reference genome (host depletion)
+- Removes reads that mapped
+- Taxonomically classifies the reads left 
+- Reports quality metrics and reads counts at the main steps
+
+The final version of this pipeline is available in another repository: https://github.com/BirgitRijvers/emc-cancermicro, but this repository contains the first versions of the pipeline which were written in Python.
+
 ## Scripts included
-### switchpipe.py
-Runs the full pipeline on both paired and single end data.
-### pipeline.py
+### Pipeline scripts
+#### switchpipe.py
+Runs the full pipeline, switches between commands based on single or paired end input data.
+#### pipeline.py
 Runs pipeline without QC on paired end data.
-### pipeline_single.py
-Runs pipeline without QC and wrong counter on single end data.
-### ncbi_id_fetcher.py
+#### pipeline_single.py
+Runs pipeline without QC on single end data.
+### Other scripts
+#### ncbi_id_fetcher.py
 Fetches taxonomy IDs from NCBI based on taxonomic names.
-### read_count_extracter_kronly.py
-Extracts read counts from certain classifications in a kraken report, incorporated into pipeline.py
-### kraken_classification_counter.py
-Counts certain classifications (Human, root, unclassified & user specified) in kraken output (not report style).
+#### kraken_classification_counter.py
+Counts certain classifications (Human, root, unclassified & user specified) in Kraken2 output (not report style).
+#### bracken_runner.py
+Runs Bracken on all Kraken2 reports in a directory.
+#### samplesheeter.py
+Creates a CSV samplesheet compatible with nf-core pipelines based on (compressed) FASTQ files in a directory.
 
 ## Citations
 ### Tools
