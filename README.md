@@ -11,6 +11,8 @@ The main goal of this internship was to create a pipeline that:
 - Taxonomically classifies the reads left 
 - Reports quality metrics and reads counts at the main steps
 
+In addition, scripts were created for various tasks. These are also provided in this repository.
+
 The final version of this pipeline is available in another repository: https://github.com/BirgitRijvers/emc-cancermicro, but this repository contains the first versions of the pipeline which were written in Python.
 
 ## Scripts included
@@ -30,6 +32,8 @@ Counts certain classifications (Human, root, unclassified & user specified) in K
 Runs Bracken on all Kraken2 reports in a directory.
 #### samplesheeter.py
 Creates a CSV samplesheet compatible with nf-core pipelines based on (compressed) FASTQ files in a directory.
+#### fastp_count_extracter.py
+Creates a CSV with QC readcounts extracted from JSON fastp output.
 
 ## Citations
 ### Tools

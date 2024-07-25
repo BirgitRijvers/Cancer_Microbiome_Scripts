@@ -83,7 +83,8 @@ def run_fastp(sample, fastq_1, fastq_2, output_dir):
         "-j",
         f"{output_dir}/fastp/reports/json/{sample}.json",
         "-R",
-        f"fastp report {sample}"
+        f"fastp report {sample}",
+        "--detect_adapter_for_pe"
     ]
 
     # Path to the output fastq file single end data
@@ -297,6 +298,8 @@ def run_kraken2(sample, output_dir):
         "--paired",
         f"{output_dir}/bwamem2/{sample}_out_unconc_1.fastq",
         f"{output_dir}/bwamem2/{sample}_out_unconc_2.fastq",
+        "--confidence",
+        "0.05",
         "--output",
         f"{output_dir}/kraken2/{sample}_kraken2.out",
         "--report",
