@@ -15,6 +15,7 @@ def create_samplesheet():
     --samplesheet, -s: Path to samplesheet to be created
     --fastq_dir, -f: Path to directory containing FASTQ files
     --paired, -p: Flag to indicate if the FASTQ files are paired-end
+    --file_extension, -e: File extension of FASTQ files
     """
 
     # Create parser
@@ -54,7 +55,8 @@ def create_samplesheet():
     if paired:
         # Loop through files and group by sample
         for filename in fastq_files:
-            sample = filename.split("_")[0]
+            parts = filename.split("_")
+            sample = "_".join(parts[:-1])  # Join all parts except the last one (R1 or R2)
             if sample not in samples:
                 samples[sample] = []
             samples[sample].append(os.path.abspath(os.path.join(data_dir, filename)))
@@ -92,4 +94,5 @@ def create_samplesheet():
                 writer.writerow(row)
 
 # Call the function to create the samplesheet
-create_samplesheet()
+if __name__ == "__main__":
+    create_samplesheet()
