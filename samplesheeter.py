@@ -4,7 +4,7 @@ import argparse
 
 def create_samplesheet():
     """
-    Create a CSV samplesheet from a directory of FASTQ files.
+    Create a CSV samplesheet from a directory of (zipped) FASTQ files.
 
     This script takes in command line arguments to specify the path to the samplesheet to be created,
     the path to the directory containing the FASTQ files, and whether the FASTQ files are paired-end or single-end.
